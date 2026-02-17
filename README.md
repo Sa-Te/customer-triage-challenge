@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Customer Support Triage Dashboard (AI-Powered)
 
-## Getting Started
+## 🚀 The Mission
 
-First, run the development server:
+Built for the [Company Name] 24-Hour Build Challenge. This tool solves the "noisy inbox" problem for support leads by automatically categorizing and prioritizing incoming tickets using AI, allowing for rapid triage without manual sorting.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🏗️ Tech Stack & Design Decisions
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Framework:** Next.js 14 (App Router) - Chosen for speed of deployment and server-side capabilities.
+- **Language:** TypeScript - For type safety and strict data modeling.
+- **State Management:** Zustand - Selected over Redux/Context for its minimal boilerplate and performance in handling client-side filtered lists.
+- **Validation:** Zod - Ensures the "mock" data and AI responses adhere to strict schema structures.
+- **AI Engine:** Google Gemini Flash (Via API) - Used for zero-latency classification of tickets.
+- **Styling:** Tailwind CSS + Lucide React - For a clean, accessible "Command Center" UI.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ⚡ Key Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1.  **Smart Triage:** Automated analysis of ticket sentiment to assign `Priority` (High/Medium/Low).
+2.  **Auto-Categorization:** Sorts tickets into `Bug`, `Billing`, or `Feature Request` automatically.
+3.  **Instant Filter:** Real-time filtering by category and priority status.
+4.  **"One-Click" Resolution:** Optimistic UI updates for marking tickets as resolved.
 
-## Learn More
+## 🛠️ How to Run Locally
 
-To learn more about Next.js, take a look at the following resources:
+1.  **Clone the repo**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    ```bash
+    git clone [your-repo-link]
+    cd customer-triage-challenge
+    ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2.  **Install Dependencies**
 
-## Deploy on Vercel
+    ```bash
+    npm install
+    ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3.  **Environment Setup**
+    - Create a `.env.local` file.
+    - Add your API key: `NEXT_PUBLIC_GEMINI_API_KEY=your_key_here`
+    - _(Note: The app runs in "Offline Mode" with pre-calculated tags if no key is provided)._
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4.  **Run the App**
+    ```bash
+    npm run dev
+    ```
+    Open http://localhost:3000
+
+## 🔮 Future Improvements (If I had 48 hours)
+
+- **Persistance:** Connect to a Supabase/Postgres DB to save state permanently.
+- **Draft Generation:** Use the LLM to write the actual email reply based on the issue context.
+- **RAG:** Ingest company documentation so the AI can answer the ticket automatically.
