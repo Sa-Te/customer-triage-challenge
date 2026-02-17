@@ -1,26 +1,44 @@
-# Customer Support Triage Dashboard (AI-Powered)
+# 🛡️ S.H.I.E.L.D. Helpdesk (AI-Powered Triage)
 
-## 🚀 The Mission
+> **"If you want to build a ship, don’t drum up people to collect wood… teach them to long for the endless immensity of the sea."**
 
-Built for the [Company Name] 24-Hour Build Challenge. This tool solves the "noisy inbox" problem for support leads by automatically categorizing and prioritizing incoming tickets using AI, allowing for rapid triage without manual sorting.
+Built for the **Founding Engineer Challenge**.
+This is not just a dashboard; it's an **intelligent command center** designed to handle high-volume chaos with zero latency. I chose a **Superhero Theme** to demonstrate how the UI handles diverse, unstructured data (e.g., "Hulk smash keyboard" vs. "Billing issue").
 
-## 🏗️ Tech Stack & Design Decisions
+🔗 **Live Deployment:** [INSERT_YOUR_VERCEL_LINK_HERE]
 
-- **Framework:** Next.js 14 (App Router) - Chosen for speed of deployment and server-side capabilities.
-- **Language:** TypeScript - For type safety and strict data modeling.
-- **State Management:** Zustand - Selected over Redux/Context for its minimal boilerplate and performance in handling client-side filtered lists.
-- **Validation:** Zod - Ensures the "mock" data and AI responses adhere to strict schema structures.
-- **AI Engine:** Google Gemini Flash (Via API) - Used for zero-latency classification of tickets.
-- **Styling:** Tailwind CSS + Lucide React - For a clean, accessible "Command Center" UI.
+## 🚀 Key Features (The "Innovation" Layer)
 
-## ⚡ Key Features
+- **🧠 AI-Powered Ingestion:** The "New Transmission" button doesn't just add a row; it sends the raw text to **Google Gemini 2.5 Flash**, which intelligently tags it with `Priority` and `Category`.
+- **⚡ Optimistic UI:** The interface feels instant. Status changes happen locally before validaiton, mimicking a high-performance desktop app.
+- **🔍 Multi-Dimensional Filtering:** Slice data by Priority, Category, and Status (Open/Resolved) simultaneously.
+- **💾 Local Persistence:** Uses `zustand-persist` to save the state to LocalStorage, ensuring data survives page reloads without a database.
 
-1.  **Smart Triage:** Automated analysis of ticket sentiment to assign `Priority` (High/Medium/Low).
-2.  **Auto-Categorization:** Sorts tickets into `Bug`, `Billing`, or `Feature Request` automatically.
-3.  **Instant Filter:** Real-time filtering by category and priority status.
-4.  **"One-Click" Resolution:** Optimistic UI updates for marking tickets as resolved.
+## 🛠️ Tech Stack & Architecture
 
-## 🛠️ How to Run Locally
+I prioritized **speed of iteration** and **type safety** for this 24-hour sprint.
+
+- **Framework:** Next.js 14 (App Router) – For easy API route integration.
+- **State:** Zustand – Selected over Context/Redux for its performance with filtered lists (no unnecessary re-renders).
+- **Validation:** Zod – Defines the "Schema of Truth" for both mock data and AI responses.
+- **Styling:** Tailwind CSS + Framer Motion – For a clean, "Command Center" aesthetic with smooth layout transitions.
+- **AI:** Google Gemini 2.5 Flash – Chosen for its generous free tier and sub-second latency.
+
+## 🧪 Quality Assurance & Testing Strategy
+
+_Given the 24-hour constraint, I prioritized feature completeness over automated coverage. However, in a production environment, this is how I would ensure stability:_
+
+1.  **Unit Tests (Jest):** I would write tests for the `useTicketStore` to ensure filtering logic (e.g., "High Priority" + "Billing") returns the correct subset.
+2.  **Integration Tests:** Test the `/api/analyze` route to mock the Gemini response and ensure it handles `500` errors gracefully (as implemented in my fallback logic).
+3.  **E2E (Cypress/Playwright):** A simple flow: Open Modal -> Type Message -> Click Process -> Verify Card Appears.
+
+## 🔮 Roadmap (If I had 48 hours)
+
+- **RAG Integration:** Upload "S.H.I.E.L.D. Protocols" (PDFs) so the AI acts as a Tier 1 Support Agent and drafts a reply automatically.
+- **Real Database:** Swap LocalStorage for Supabase (PostgreSQL) to enable multi-user collaboration.
+- **Slack Alerts:** Webhook integration to ping the #ops channel when a "High Priority" threat is detected.
+
+## 🏃‍♂️ How to Run Locally
 
 1.  **Clone the repo**
 
@@ -36,18 +54,10 @@ Built for the [Company Name] 24-Hour Build Challenge. This tool solves the "nois
     ```
 
 3.  **Environment Setup**
-    - Create a `.env.local` file.
+    - Create a `.env.local` file in the root.
     - Add your API key: `NEXT_PUBLIC_GEMINI_API_KEY=your_key_here`
-    - _(Note: The app runs in "Offline Mode" with pre-calculated tags if no key is provided)._
 
 4.  **Run the App**
     ```bash
     npm run dev
     ```
-    Open http://localhost:3000
-
-## 🔮 Future Improvements (If I had 48 hours)
-
-- **Persistance:** Connect to a Supabase/Postgres DB to save state permanently.
-- **Draft Generation:** Use the LLM to write the actual email reply based on the issue context.
-- **RAG:** Ingest company documentation so the AI can answer the ticket automatically.

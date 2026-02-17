@@ -16,8 +16,7 @@ export async function POST(request: Request) {
         { status: 400 },
       );
     }
-
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
     const prompt = `
         You are an AI support assistant for a Superhero Helpdesk and you will help in classifing tickets for a triage dashboard.

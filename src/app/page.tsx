@@ -4,8 +4,11 @@ import TicketList from "@/components/TicketList";
 import { useTicketStore } from "@/store/TicketStore";
 import { Priority, Category } from "@/lib/types";
 import StatsCards from "@/components/StatsCards";
+import { useState } from "react";
+import NewTicketModal from "@/components/NewTicketModal";
 
 export default function Dashboard() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const {
     setPriorityFilter,
     setCategoryFilter,
@@ -29,13 +32,19 @@ export default function Dashboard() {
 
           <div className="flex gap-2">
             <button
-              onClick={() => window.location.reload()}
+              onClick={() => {
+                localStorage.clear();
+                window.location.reload();
+              }}
               className="px-4 py-2 bg-white border text-sm font-medium rounded-lg hover:bg-gray-50"
             >
               Reset System
             </button>
-            <button className="px-4 py-2 bg-black text-white text-sm font-medium rounded-lg hover:bg-gray-800 shadow-lg">
-              + New Ticket
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="px-4 py-2 bg-black text-white text-sm font-medium rounded-lg hover:bg-gray-800 shadow-lg flex items-center gap-2"
+            >
+              + New Transmission
             </button>
           </div>
         </header>
@@ -79,6 +88,11 @@ export default function Dashboard() {
 
         {/* The Grid */}
         <TicketList />
+
+        <NewTicketModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+        />
       </div>
     </main>
   );
