@@ -5,7 +5,7 @@
 Built for the **Founding Engineer Challenge**.
 This is not just a dashboard; it's an **intelligent command center** designed to handle high-volume chaos with zero latency. I chose a **Superhero Theme** to demonstrate how the UI handles diverse, unstructured data (e.g., "Hulk smash keyboard" vs. "Billing issue").
 
-🔗 **Live Deployment:** [INSERT_YOUR_VERCEL_LINK_HERE]
+🔗 **Live Deployment:** (https://customer-triage-challenge-argoswluy-sa-tes-projects.vercel.app/)
 
 ## 🚀 Key Features (The "Innovation" Layer)
 
