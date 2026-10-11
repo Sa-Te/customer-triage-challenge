@@ -43,7 +43,7 @@ _Given the 24-hour constraint, I prioritized feature completeness over automated
 1.  **Clone the repo**
 
     ```bash
-    git clone [your-repo-link]
+    git clone <this repo>
     cd customer-triage-challenge
     ```
 
@@ -55,7 +55,7 @@ _Given the 24-hour constraint, I prioritized feature completeness over automated
 
 3.  **Environment Setup**
     - Create a `.env.local` file in the root.
-    - Add your API key: `NEXT_PUBLIC_GEMINI_API_KEY=your_key_here`
+    - Add your API key: `GEMINI_API_KEY=your_key_here`
 
 4.  **Run the App**
     ```bash
